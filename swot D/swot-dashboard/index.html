@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT චන්ද්‍රිකා ස්වath පථය සහ දත්ත පුවරුව</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Bar -->
+    <header class="bg-slate-900 border-b border-slate-800 px-6 py-3 flex justify-between items-center shrink-0">
+        <h1 class="text-lg font-bold flex items-center gap-2">
+            🛰️ <span class="text-cyan-400">SWOT Swath Track & Data Panel</span> 
+        </h1>
+        <div class="flex items-center gap-4">
+            <span class="text-xs bg-cyan-950 text-cyan-300 border border-cyan-800 px-3 py-1 rounded-full font-mono">
+                කලාපය: 79°E–82°E, 5°N–10°N
+            </span>
+            <button id="stream-toggle" class="bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-medium px-4 py-1.5 rounded-lg transition shadow-md">
+                සජීවී ප්‍රවාහය (Stream) අරඹන්න
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-1 flex flex-col md:flex-row overflow-hidden p-4 gap-4">
+        
+        <!-- Left Map View -->
+        <div class="flex-1 relative bg-slate-900/40 rounded-xl border border-slate-800 flex items-center justify-center p-2">
+            <canvas id="map-canvas" class="w-full h-full rounded-lg"></canvas>
+            
+            <!-- Floating Legend -->
+            <div class="absolute bottom-4 left-4 bg-slate-900/90 border border-slate-800 backdrop-blur px-3 py-2 rounded-lg text-xs font-mono text-cyan-400 shadow-lg flex items-center gap-3">
+                <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span> SSHA (-)</div>
+                <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span> SSHA (+)</div>
+            </div>
+        </div>
+
+        <!-- Right Side Data Panel -->
+        <aside class="w-full md:w-80 bg-slate-900 border border-slate-800 rounded-xl p-5 flex flex-col justify-between shrink-0 shadow-xl">
+            <div>
+                <h2 class="text-sm font-bold uppercase tracking-wider text-cyan-300 mb-4 border-b border-slate-800 pb-2">
+                    විශ්ලේෂණ දත්ත පුවරුව (Metrics)
+                </h2>
+                
+                <div class="space-y-4 text-xs font-mono">
+                    <div class="bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                        <div class="text-slate-400">මුළු ලක්ෂ්‍ය සංඛ්‍යාව:</div>
+                        <div id="metric-total" class="text-lg font-bold text-white mt-1">0</div>
+                    </div>
+
+                    <div class="bg-slate-950 p-3 rounded-lg border border-slate-800/80">
+                        <div class="text-slate-400">සාමාන්‍ය SSHA අගය (Mean):</div>
+                        <div id="metric-mean" class="text-base font-bold text-cyan-400 mt-1">0.000 m</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800/80">
+                            <div class="text-slate-500 text-[10px]">උපරිම (Max):</div>
+                            <div id="metric-max" class="text-sm font-bold text-red-400 mt-0.5">0.00 m</div>
+                        </div>
+                        <div class="bg-slate-950 p-2.5 rounded-lg border border-slate-800/80">
+                            <div class="text-slate-500 text-[10px]">අවම (Min):</div>
+                            <div id="metric-min" class="text-sm font-bold text-blue-400 mt-0.5">0.00 m</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Status Indicator -->
+            <div class="mt-4 bg-slate-950 border border-slate-800 rounded-lg p-3">
+                <div class="text-[10px] uppercase font-mono text-slate-500 mb-1">තත්වය (Status)</div>
+                <div id="status-text" class="text-xs font-mono text-emerald-400 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> පද්ධතිය ක්‍රියාත්මකයි
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

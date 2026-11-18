@@ -1,0 +1,14 @@
+/* Custom smooth scrollbar for the console log */
+#console-log::-webkit-scrollbar {
+    width: 6px;
+}
+#console-log::-webkit-scrollbar-track {
+    background: #020617;
+}
+#console-log::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+}
+#console-log::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+}
